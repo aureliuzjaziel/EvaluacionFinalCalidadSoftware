@@ -40,7 +40,7 @@ class UsuariosFlowTests(TestCase):
 			params={
 				"page": 3,
 				"results": 10,
-				"seed": "eval-final-usuarios-2026-09-28",
+				"seed": "Evaluacion_final_Xavier_Lagos",
 			},
 			timeout=10,
 		)
@@ -52,3 +52,5 @@ class UsuariosFlowTests(TestCase):
 		self.assertEqual(detalle.status_code, 200)
 		self.assertContains(detalle, usuario.email)
 		self.assertContains(detalle, usuario.imagen_large)
+		self.assertNotContains(detalle, usuario.imagen_medium)
+		self.assertNotContains(detalle, usuario.imagen_thumbnail)
