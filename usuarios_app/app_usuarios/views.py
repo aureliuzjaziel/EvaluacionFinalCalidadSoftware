@@ -10,7 +10,7 @@ def lista_usuarios(request):
     usuarios = Usuario.objects.all()
     return render(request, "app_usuarios/usuario_list.html", {"usuarios": usuarios})
 
-def detalle_usuario(request, uuid):
+def detalle_usuario(request, id):
 
-    usuario = get_object_or_404(Usuario, uuid=uuid)
+    usuario = get_object_or_404(Usuario, id=id)
     return render(request, "app_usuarios/usuario_details.html", {"usuario": usuario})

@@ -1,27 +1,54 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Lista de Usuarios</title>
     <style>
-        body { font-family: sans-serif; background: #f4f6f9; margin: 40px; }
-        .contenedor { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 20px; }
-        .tarjeta { background: white; padding: 20px; border-radius: 8px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
-        .avatar { border-radius: 50%; width: 100px; }
-        .btn { display: inline-block; margin-top: 10px; padding: 6px 12px; background: #3498db; color: white; text-decoration: none; border-radius: 4px; }
+      body {
+        font-family: sans-serif;
+        background: #f4f6f9;
+        margin: 40px;
+      }
+      .contenedor {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 20px;
+      }
+      .tarjeta {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .avatar {
+        border-radius: 50%;
+        width: 100px;
+      }
+      .btn {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 6px 12px;
+        background: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 4px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Usuarios</h1>
     <div class="contenedor">
-        {% for u in usuarios %}
-        <div class="tarjeta">
-            <img class="avatar" src="{{ u.imagen_medium }}" alt="Avatar">
-            <h3>{{ u.nombre_completo }}</h3>
-            <p><strong>Ciudad:</strong> {{ u.ciudad }}</p>
-            <a class="btn" href="{% url 'detalle_usuario' u.uuid %}">Ver Detalles</a>
-        </div>
-        {% endfor %}
+      {% for usuario in usuarios %}
+      <div class="tarjeta">
+        <img class="avatar" src="{{ usuario.imagen_medium }}" alt="Avatar" />
+        <h3>{{ usuario.nombre_completo }}</h3>
+        <p><strong>Ciudad:</strong> {{ usuario.ciudad }}</p>
+        <a class="btn" href="{% url 'detalle_usuario' usuario.id %}"
+          >Ver Detalles</a
+        >
+      </div>
+      {% endfor %}
     </div>
-</body>
+  </body>
 </html>

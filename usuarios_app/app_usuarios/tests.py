@@ -45,9 +45,9 @@ class UsuariosFlowTests(TestCase):
 			timeout=10,
 		)
 
-		usuario = Usuario.objects.get(uuid="uuid-0")
+		usuario = Usuario.objects.get(id="uuid-0")
 		detalle = self.client.get(
-			reverse("detalle_usuario", args=[usuario.uuid])
+			reverse("detalle_usuario", args=[usuario.id])
 		)
 		self.assertEqual(detalle.status_code, 200)
 		self.assertContains(detalle, usuario.email)

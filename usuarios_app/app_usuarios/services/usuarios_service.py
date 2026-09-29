@@ -24,17 +24,17 @@ def load_usuarios():
     if usuarios_api is None:
         return "No se pudieron cargar los usuarios desde la API."
 
-    for u in usuarios_api:
+    for usuario_api in usuarios_api:
         Usuario.objects.create(
-            uuid=u['login']['uuid'],
-            nombre_completo=f"{u['name']['title']} {u['name']['first']} {u['name']['last']}",
-            email=u['email'],
-            genero=u['gender'].upper(),
-            edad=u['dob']['age'],
-            ciudad=u['location']['city'],
-            imagen_large=u['picture']['large'],
-            imagen_medium=u['picture']['medium'],
-            imagen_thumbnail=u['picture']['thumbnail'],
-            fecha_registro=u['registered']['date']
+            id=usuario_api['login']['uuid'],
+            nombre_completo=f"{usuario_api['name']['title']} {usuario_api['name']['first']} {usuario_api['name']['last']}",
+            email=usuario_api['email'],
+            genero=usuario_api['gender'].upper(),
+            edad=usuario_api['dob']['age'],
+            ciudad=usuario_api['location']['city'],
+            imagen_large=usuario_api['picture']['large'],
+            imagen_medium=usuario_api['picture']['medium'],
+            imagen_thumbnail=usuario_api['picture']['thumbnail'],
+            fecha_registro=usuario_api['registered']['date']
         )
     return f"Éxito: Se guardaron {Usuario.objects.count()} usuarios."
